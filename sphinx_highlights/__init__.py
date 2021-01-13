@@ -40,7 +40,7 @@ import random
 import re
 from importlib import import_module
 from types import FunctionType
-from typing import AbstractSet, Iterator, List, Sequence, TypeVar, Union
+from typing import AbstractSet, Iterator, List, Optional, Sequence, TypeVar, Union
 
 # 3rd party
 from docutils import nodes
@@ -240,7 +240,7 @@ class SphinxHighlightsDirective(SphinxDirective):
 		return [targetnode, body_node]
 
 
-def copy_assets(app: Sphinx, exception):
+def copy_assets(app: Sphinx, exception: Optional[Exception] = None) -> None:
 	"""
 	Copy asset files to the output.
 
@@ -248,7 +248,7 @@ def copy_assets(app: Sphinx, exception):
 	:param exception: Any exception which occurred and caused Sphinx to abort.
 	"""
 
-	if exception:
+	if exception:  # pragma: no cover
 		return
 
 	style = StringList()
@@ -301,6 +301,7 @@ def setup(app: Sphinx) -> SphinxExtMetadata:
 	"""
 
 	app.setup_extension("sphinx_panels")
+	app.setup_extension("sphinx_toolbox.tweaks.sphinx_panels_tabs")
 	app.add_directive("api-highlights", SphinxHighlightsDirective)
 	app.add_css_file("css/sphinx_highlights.css")
 	app.connect("build-finished", copy_assets)

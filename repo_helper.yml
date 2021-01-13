@@ -15,7 +15,6 @@ conda_channels:
   - conda-forge
 
 python_versions:
- - 3.6
  - 3.7
  - 3.8
  - 3.9
@@ -30,7 +29,6 @@ third_party_version_matrix:
   sphinx:
     - 3.2
     - 3.3
-    - 3.4
 
 classifiers:
  - 'Development Status :: 4 - Beta'

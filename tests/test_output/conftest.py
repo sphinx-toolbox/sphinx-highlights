@@ -42,7 +42,7 @@ import sphinx_highlights
 
 fixtures = [make_app, shared_result, sphinx_test_tempdir, test_params, testing_app]
 
-pytest_plugins = ("pytest_regressions", "sphinx.testing.fixtures", "domdf_python_tools.testing")
+pytest_plugins = ("domdf_python_tools.testing", )
 
 
 class AppParams(NamedTuple):
