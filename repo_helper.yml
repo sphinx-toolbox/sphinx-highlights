@@ -1,0 +1,43 @@
+# Configuration for 'repo_helper' (https://github.com/domdfcoding/repo_helper)
+---
+modname: 'sphinx-highlights'
+copyright_years: '2021'
+author: 'Dominic Davis-Foster'
+email: 'dominic@davis-foster.co.uk'
+username: 'sphinx-toolbox'
+assignee: 'domdfcoding'
+primary_conda_channel: 'domdfcoding'
+version: '0.0.0'
+license: 'MIT'
+short_desc: 'Sphinx extention to display a selection of highlights from a Python library.'
+
+conda_channels:
+  - conda-forge
+
+python_versions:
+ - 3.6
+ - 3.7
+ - 3.8
+ - 3.9
+ - 3.10-dev
+
+keywords:
+  - sphinx
+  - documentation
+  - sphinx-extension
+
+third_party_version_matrix:
+  sphinx:
+    - 3.2
+    - 3.3
+
+
+classifiers:
+ - 'Development Status :: 4 - Beta'
+ - "Framework :: Sphinx :: Extension"
+ - 'Intended Audience :: Developers'
+ - 'Programming Language :: Python'
+ - "Topic :: Documentation"
+ - 'Topic :: Documentation :: Sphinx'
+ - 'Topic :: Software Development :: Documentation'
+ - "Topic :: Utilities"
