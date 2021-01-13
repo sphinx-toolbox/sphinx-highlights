@@ -1,5 +1,5 @@
 ==================
-sphinx_highlights
+API Reference
 ==================
 
 .. automodule:: sphinx_highlights

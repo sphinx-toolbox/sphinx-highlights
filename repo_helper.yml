@@ -30,7 +30,7 @@ third_party_version_matrix:
   sphinx:
     - 3.2
     - 3.3
-
+    - 3.4
 
 classifiers:
  - 'Development Status :: 4 - Beta'
@@ -41,3 +41,9 @@ classifiers:
  - 'Topic :: Documentation :: Sphinx'
  - 'Topic :: Software Development :: Documentation'
  - "Topic :: Utilities"
+
+sphinx_html_theme: furo
+standalone_contrib_guide: true
+
+extra_sphinx_extensions:
+ - sphinx_highlights

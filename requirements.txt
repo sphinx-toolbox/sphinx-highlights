@@ -1,0 +1,6 @@
+default-values>=0.4.2
+docutils>=0.16
+domdf-python-tools>=2.2.0
+sphinx>=3.2.0
+sphinx-panels>=0.5.2
+sphinx-toolbox>=1.8.4
