@@ -127,7 +127,7 @@ def format_signature(obj: Union[type, FunctionType]) -> StringList:
 
 	total_length = len(obj.__name__) + len(return_annotation)
 
-	arguments_buf = DelimitedList()
+	arguments_buf: DelimitedList[str] = DelimitedList()
 
 	param: inspect.Parameter
 	for param in signature.parameters.values():
