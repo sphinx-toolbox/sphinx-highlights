@@ -40,7 +40,7 @@ import random
 import re
 from importlib import import_module
 from types import FunctionType
-from typing import  Iterable, Iterator, List, Optional, TypeVar, Union
+from typing import Iterable, Iterator, List, Optional, TypeVar, Union
 
 # 3rd party
 from docutils import nodes
