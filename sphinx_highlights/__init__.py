@@ -40,7 +40,7 @@ import random
 import re
 from importlib import import_module
 from types import FunctionType
-from typing import AbstractSet, Iterator, List, Optional, Sequence, TypeVar, Union
+from typing import  Iterable, Iterator, List, Optional, TypeVar, Union
 
 # 3rd party
 from docutils import nodes
@@ -147,14 +147,31 @@ def format_signature(obj: Union[type, FunctionType]) -> StringList:
 	return buf
 
 
-def get_random_sample(items: Union[Sequence[_T], AbstractSet[_T]]) -> List[_T]:
+def get_random_sample(items: Iterable[_T]) -> List[_T]:
 	"""
 	Returns four random elements from ``items``.
 
 	:param items:
 	"""
 
-	return random.sample(items, 4)
+	return random.sample(extend(items, 4), 4)
+
+
+def extend(sequence: Iterable[_T], minsize: int) -> List[_T]:
+	"""
+	Extend ``sequence`` by repetition until it is at least as long as ``minsize``.
+
+	:param sequence:
+	:param minsize:
+	"""
+
+	output = list(sequence)
+	cycle = itertools.cycle(output)
+
+	while len(output) < minsize:
+		output.append(next(cycle))
+
+	return output
 
 
 class SphinxHighlightsDirective(SphinxDirective):
@@ -183,7 +200,7 @@ class SphinxHighlightsDirective(SphinxDirective):
 
 	def run(self):
 		# colours = itertools.cycle(self.delimited_get("colours", "#6ab0de"))
-		colours = itertools.cycle(self.delimited_get("colours", "blue"))
+		colours = itertools.cycle(get_random_sample(self.delimited_get("colours", "blue")))
 		classes = list(self.delimited_get("class", "col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-2"))
 
 		content = StringList()

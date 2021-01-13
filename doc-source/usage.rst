@@ -2,6 +2,8 @@
 Usage
 =======
 
+``sphinx-highlights`` provides a single directive:
+
 
 .. rst:directive:: api-highlights
 
@@ -37,7 +39,10 @@ Usage
 	.. rst:directive:option:: colours
 		:type: Comma- or space-separated list of strings.
 
-		The colours to use for the panel headers. Choose from "blue", "green", "red", or "orange". Default "blue".
+		| The colours to use for the panel headers. Choose from "blue", "green", "red", or "orange".
+		| Default "blue".
+
+		.. versionchanged:: 0.2.0  If more than four colours are provided four will be chosen at random.
 
 	.. rst:directive:option:: classes
 		:type: Comma- or space-separated list of strings.

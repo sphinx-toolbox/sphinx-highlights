@@ -27,6 +27,7 @@
 #
 
 # stdlib
+import random
 from typing import Any, Dict, NamedTuple, Sequence, Tuple
 
 # 3rd party
@@ -99,18 +100,20 @@ def app_params(
 
 @pytest.fixture()
 def page(testing_app, request, monkeypatch) -> BeautifulSoup:
-	fixed_sample = [
-			".stringlist.StringList",
-			".testing.check_file_regression",
-			"domdf_python_tools.iterative.groupfloats",
-			"domdf_python_tools.paths.PathPlus",
-			]
+	# fixed_sample = [
+	# 		".stringlist.StringList",
+	# 		".testing.check_file_regression",
+	# 		"domdf_python_tools.iterative.groupfloats",
+	# 		"domdf_python_tools.paths.PathPlus",
+	# 		]
+	#
+	# monkeypatch.setattr(
+	# 		sphinx_highlights,
+	# 		"get_random_sample",
+	# 		lambda seq: fixed_sample,
+	# 		)
 
-	monkeypatch.setattr(
-			sphinx_highlights,
-			"get_random_sample",
-			lambda seq: fixed_sample,
-			)
+	random.seed("5678")
 
 	testing_app.build(force_all=True)
 
