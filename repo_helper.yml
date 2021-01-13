@@ -45,3 +45,5 @@ standalone_contrib_guide: true
 
 extra_sphinx_extensions:
  - sphinx_highlights
+
+preserve_custom_theme: true

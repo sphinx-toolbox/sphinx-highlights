@@ -47,4 +47,54 @@ Usage
 	.. rst:directive:option:: classes
 		:type: Comma- or space-separated list of strings.
 
-		The classes to use for the panels. Default ``col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-2``.
+		| The classes to use for the panels.
+		| Default ``col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-2``.
+
+
+Customising the colours
+---------------------------
+
+By default the only colours available are:
+
+.. hlist::
+	:columns: 4
+
+	* .. rst-class:: highlight-blue
+
+	      |nbsp| |nbsp| ``blue`` |nbsp| |nbsp|
+
+	* .. rst-class:: highlight-green
+
+	      |nbsp| |nbsp| ``green`` |nbsp| |nbsp|
+
+	* .. rst-class:: highlight-red
+
+	      |nbsp| |nbsp| ``red`` |nbsp| |nbsp|
+
+	* .. rst-class:: highlight-orange
+
+	      |nbsp| |nbsp| ``orange`` |nbsp| |nbsp|
+
+Additional colours can be created by adding your own custom CSS to Sphinx:
+
+.. code-block:: css
+
+	div.sphinx-highlights div.highlight-purple div.card-header {
+		background-color: #B452CD;
+	}
+
+where ``purple`` is the name of the colour to use in the ``colours`` option.
+
+.. hlist::
+	:columns: 4
+
+	* .. rst-class:: highlight-purple
+
+	      |nbsp| |nbsp| ``purple`` |nbsp| |nbsp|
+
+
+
+.. seealso::
+
+	https://docs.readthedocs.io/en/stable/guides/adding-custom-css.html
+	for more information on adding custom CSS.
