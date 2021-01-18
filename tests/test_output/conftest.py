@@ -38,12 +38,7 @@ from sphinx.testing.fixtures import app as testing_app
 from sphinx.testing.fixtures import make_app, shared_result, sphinx_test_tempdir, test_params
 from sphinx.testing.path import path
 
-# this package
-import sphinx_highlights
-
 fixtures = [make_app, shared_result, sphinx_test_tempdir, test_params, testing_app]
-
-pytest_plugins = ("domdf_python_tools.testing", )
 
 
 class AppParams(NamedTuple):
@@ -100,19 +95,6 @@ def app_params(
 
 @pytest.fixture()
 def page(testing_app, request, monkeypatch) -> BeautifulSoup:
-	# fixed_sample = [
-	# 		".stringlist.StringList",
-	# 		".testing.check_file_regression",
-	# 		"domdf_python_tools.iterative.groupfloats",
-	# 		"domdf_python_tools.paths.PathPlus",
-	# 		]
-	#
-	# monkeypatch.setattr(
-	# 		sphinx_highlights,
-	# 		"get_random_sample",
-	# 		lambda seq: fixed_sample,
-	# 		)
-
 	random.seed("5678")
 
 	testing_app.build(force_all=True)
