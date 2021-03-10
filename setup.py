@@ -2,6 +2,7 @@
 # This file is managed by 'repo_helper'. Don't edit it directly.
 
 # stdlib
+import shutil
 import sys
 
 # 3rd party
@@ -13,9 +14,11 @@ sys.path.append('.')
 from __pkginfo__ import *  # pylint: disable=wildcard-import
 
 setup(
-		description="Sphinx extention to display a selection of highlights from a Python library.",
+		description="Sphinx extension to display a selection of highlights from a Python library.",
 		extras_require=extras_require,
 		install_requires=install_requires,
 		py_modules=[],
 		version=__version__,
 		)
+
+shutil.rmtree("sphinx_highlights.egg-info", ignore_errors=True)
