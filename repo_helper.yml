@@ -11,6 +11,11 @@ version: '0.2.0'
 license: 'MIT'
 short_desc: 'Sphinx extension to display a selection of highlights from a Python library.'
 
+sphinx_html_theme: furo
+standalone_contrib_guide: true
+preserve_custom_theme: true
+use_whey: true
+
 conda_channels:
   - conda-forge
 
@@ -41,10 +46,5 @@ classifiers:
  - 'Topic :: Software Development :: Documentation'
  - "Topic :: Utilities"
 
-sphinx_html_theme: furo
-standalone_contrib_guide: true
-
 extra_sphinx_extensions:
  - sphinx_highlights
-
-preserve_custom_theme: true
