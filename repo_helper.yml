@@ -9,7 +9,7 @@ assignee: 'domdfcoding'
 primary_conda_channel: 'domdfcoding'
 version: '0.2.0'
 license: 'MIT'
-short_desc: 'Sphinx extention to display a selection of highlights from a Python library.'
+short_desc: 'Sphinx extension to display a selection of highlights from a Python library.'
 
 conda_channels:
   - conda-forge
@@ -19,6 +19,7 @@ python_versions:
  - 3.8
  - 3.9
  - 3.10-dev
+ - pypy37
 
 keywords:
   - sphinx

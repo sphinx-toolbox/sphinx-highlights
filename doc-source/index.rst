@@ -4,7 +4,7 @@ sphinx-highlights
 
 .. start short_desc
 
-**Sphinx extention to display a selection of highlights from a Python library.**
+**Sphinx extension to display a selection of highlights from a Python library.**
 
 .. end short_desc
 
