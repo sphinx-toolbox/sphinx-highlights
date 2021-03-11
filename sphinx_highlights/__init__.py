@@ -198,7 +198,7 @@ class SphinxHighlightsDirective(SphinxDirective):
 
 		return filter(bool, re.split("[,; ]", self.options.get(option, default)))
 
-	def run_html(self):
+	def run_html(self) -> List[nodes.Node]:
 		"""
 		Generate output for ``HTML`` builders.
 		"""
@@ -255,7 +255,7 @@ class SphinxHighlightsDirective(SphinxDirective):
 
 		return [targetnode, body_node]
 
-	def run_generic(self):
+	def run_generic(self) -> List[nodes.Node]:
 		"""
 		Generate generic reStructuredText output.
 		"""
@@ -296,7 +296,10 @@ class SphinxHighlightsDirective(SphinxDirective):
 
 		return [targetnode, body_node]
 
-	def run(self):
+	def run(self) -> List[nodes.Node]:
+		"""
+		Create the highlights node.
+		"""
 
 		if self.env.app.builder.format.lower() == "html":
 			return self.run_html()
