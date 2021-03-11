@@ -2,7 +2,7 @@
 #
 #  __init__.py
 """
-Sphinx extention to display a selection of highlights from a Python library.
+Sphinx extension to display a selection of highlights from a Python library.
 """
 #
 #  Copyright © 2021 Dominic Davis-Foster <dominic@davis-foster.co.uk>
@@ -198,7 +198,11 @@ class SphinxHighlightsDirective(SphinxDirective):
 
 		return filter(bool, re.split("[,; ]", self.options.get(option, default)))
 
-	def run(self):
+	def run_html(self):
+		"""
+		Generate output for ``HTML`` builders.
+		"""
+
 		# colours = itertools.cycle(self.delimited_get("colours", "#6ab0de"))
 		colours = itertools.cycle(get_random_sample(self.delimited_get("colours", "blue")))
 		classes = list(self.delimited_get("class", "col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-2"))
@@ -218,20 +222,15 @@ class SphinxHighlightsDirective(SphinxDirective):
 			module = import_module('.'.join(name_parts[:-1]))
 			obj = getattr(module, name_parts[-1])
 
-			role = ":py:obj:"
-
-			if isinstance(obj, FunctionType):
-				role = ":func:"
-			elif isinstance(obj, type):
-				role = ":class:"
-
 			colour_class = f"highlight-{next(colours)}"
 			content.append(f":column: {DelimitedList((*classes, colour_class)): }")
 
-			if role == ":func:":
-				content.append(f"{role}`{'.'.join(name_parts[1:])}() <.{obj_name}>`")
+			if isinstance(obj, FunctionType):
+				content.append(f":func:`{'.'.join(name_parts[1:])}() <.{obj_name}>`")
+			elif isinstance(obj, type):
+				content.append(f":class:`{'.'.join(name_parts[1:])} <.{obj_name}>`")
 			else:
-				content.append(f"{role}`{'.'.join(name_parts[1:])} <.{obj_name}>`")
+				content.append(f":py:obj:`{'.'.join(name_parts[1:])} <.{obj_name}>`")
 
 			content.append('^' * len(content[-1]))
 			content.blankline()
@@ -255,6 +254,54 @@ class SphinxHighlightsDirective(SphinxDirective):
 		sphinx_highlights_purger.add_node(self.env, body_node, targetnode, self.lineno)
 
 		return [targetnode, body_node]
+
+	def run_generic(self):
+		"""
+		Generate generic reStructuredText output.
+		"""
+
+		content = StringList()
+		content.indent_type = ' '
+
+		for obj_name in get_random_sample(sorted(set(self.content))):
+			if self.options.get("module", '') and obj_name.startswith('.'):
+				obj_name = obj_name.replace('.', f"{self.options['module']}.", 1)
+
+			name_parts = obj_name.split('.')
+			module = import_module('.'.join(name_parts[:-1]))
+			obj = getattr(module, name_parts[-1])
+
+			if isinstance(obj, FunctionType):
+				content.append(f"* :func:`{'.'.join(name_parts[1:])}() <.{obj_name}>`")
+			elif isinstance(obj, type):
+				content.append(f"* :class:`{'.'.join(name_parts[1:])} <.{obj_name}>`")
+			else:
+				content.append(f"* :py:obj:`{'.'.join(name_parts[1:])} <.{obj_name}>`")
+
+			with content.with_indent_size(2):
+				content.blankline()
+				content.append(format_signature(obj))
+				content.blankline()
+				content.append(inspect.cleandoc(obj.__doc__ or '').split("\n\n")[0])
+				content.blankline()
+
+		targetid = f'sphinx-highlights-{self.env.new_serialno("sphinx-highlights"):d}'
+		targetnode = nodes.target('', '', ids=[targetid])
+
+		view = ViewList(content)
+		body_node = nodes.container(rawsource=str(content))
+		self.state.nested_parse(view, self.content_offset, body_node)  # type: ignore
+
+		sphinx_highlights_purger.add_node(self.env, body_node, targetnode, self.lineno)
+
+		return [targetnode, body_node]
+
+	def run(self):
+
+		if self.env.app.builder.format.lower() == "html":
+			return self.run_html()
+		else:
+			return self.run_generic()
 
 
 def copy_assets(app: Sphinx, exception: Optional[Exception] = None) -> None:

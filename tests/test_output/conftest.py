@@ -34,11 +34,24 @@ from typing import Any, Dict, NamedTuple, Sequence, Tuple
 import pytest
 from bs4 import BeautifulSoup  # type: ignore
 from domdf_python_tools.paths import PathPlus
-from sphinx.testing.fixtures import app as testing_app
-from sphinx.testing.fixtures import make_app, shared_result, sphinx_test_tempdir, test_params
+from sphinx.testing.fixtures import app, make_app, shared_result, sphinx_test_tempdir, test_params
 from sphinx.testing.path import path
 
-fixtures = [make_app, shared_result, sphinx_test_tempdir, test_params, testing_app]
+fixtures = [make_app, shared_result, sphinx_test_tempdir, test_params, app]
+
+DEFAULT_ENABLED_MARKERS = [
+		(
+				'sphinx(builder, testroot=None, freshenv=False, confoverrides=None, tags=None,'
+				' docutilsconf=None, parallel=0): arguments to initialize the sphinx test application.'
+				),
+		"test_params(shared_result=...): test parameters.",
+		]
+
+
+def pytest_configure(config):
+	# register custom markers
+	for marker in DEFAULT_ENABLED_MARKERS:
+		config.addinivalue_line("markers", marker)
 
 
 class AppParams(NamedTuple):
@@ -94,12 +107,12 @@ def app_params(
 
 
 @pytest.fixture()
-def page(testing_app, request, monkeypatch) -> BeautifulSoup:
+def page(app, request, monkeypatch) -> BeautifulSoup:
 	random.seed("5678")
 
-	testing_app.build(force_all=True)
+	app.build(force_all=True)
 
 	pagename = request.param
-	c = (testing_app.outdir / pagename).read_text()
+	c = (app.outdir / pagename).read_text()
 
 	yield BeautifulSoup(c, "html5lib")
