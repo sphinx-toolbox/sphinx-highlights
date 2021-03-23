@@ -4,8 +4,6 @@ name: Windows
 
 on:
   push:
-  pull_request:
-    branches: ["master"]
 
 jobs:
   tests:
@@ -23,7 +21,7 @@ jobs:
           - {python-version: "3.8", testenvs: "py38-sphinx{3.2,3.3},build", experimental: False}
           - {python-version: "3.9", testenvs: "py39-sphinx{3.2,3.3},build", experimental: False}
           - {python-version: "3.10.0-alpha.6", testenvs: "py310-dev-sphinx{3.2,3.3},build", experimental: True}
-          - {python-version: "pypy-3.7", testenvs: "pypy37-sphinx{3.2,3.3},build", experimental: False}
+          - {python-version: "pypy-3.7", testenvs: "pypy37-sphinx{3.2,3.3},build", experimental: True}
 
     steps:
       - name: Checkout 🛎️
