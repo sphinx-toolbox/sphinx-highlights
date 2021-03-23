@@ -1,5 +1,6 @@
 # stdlib
 import random
+import re
 
 # 3rd party
 import pytest
@@ -31,4 +32,8 @@ def test_latex_output(app, file_regression: FileRegressionFixture):
 
 	output_file = PathPlus(app.outdir / "sphinx-highlights-demo.tex")
 	content = StringList(output_file.read_lines())
-	check_file_regression(content, file_regression, extension=".tex")
+	check_file_regression(
+			re.sub(r"\\date{.*}", r"\\date{Mar 11, 2021}", str(content)),
+			file_regression,
+			extension=".tex",
+			)
