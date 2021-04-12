@@ -39,6 +39,7 @@ known_third_party = [
     "docutils",
     "domdf_python_tools",
     "github",
+    "importlib_metadata",
     "pytest",
     "pytest_cov",
     "pytest_randomly",
