@@ -14,3 +14,5 @@ Highlights
 	domdf_python_tools.paths.PathPlus
 	domdf_python_tools.iterative.groupfloats
 	domdf_python_tools.words.Plural
+
+See `another example <https://domdf-python-tools.readthedocs.io/en/latest/#highlights>`_ in the documentation for ``domdf_python_tools``, which uses the ReadTheDocs Sphinx Theme.

@@ -118,6 +118,8 @@ sphinx-highlights
 
 .. end shields
 
+See `the documentation <https://sphinx-highlights.readthedocs.io/en/latest/demo.html>`_ for a demo.
+
 Installation
 --------------
 
