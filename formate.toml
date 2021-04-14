@@ -36,6 +36,7 @@ known_third_party = [
     "coverage",
     "coverage_pyver_pragma",
     "default_values",
+    "dict2css",
     "docutils",
     "domdf_python_tools",
     "github",
