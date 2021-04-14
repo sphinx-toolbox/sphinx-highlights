@@ -43,6 +43,7 @@ from types import FunctionType
 from typing import Iterable, Iterator, List, Optional, TypeVar, Union
 
 # 3rd party
+import dict2css
 from docutils import nodes
 from docutils.parsers.rst.directives import unchanged_required
 from docutils.statemachine import ViewList
@@ -307,6 +308,14 @@ class SphinxHighlightsDirective(SphinxDirective):
 			return self.run_generic()
 
 
+_colour_map = {
+		"blue": "#6ab0de",
+		"orange": "#f0b37e",
+		"green": "#1abc9c",
+		"red": "#f29f97",
+		}
+
+
 def copy_assets(app: Sphinx, exception: Optional[Exception] = None) -> None:
 	"""
 	Copy asset files to the output.
@@ -318,7 +327,10 @@ def copy_assets(app: Sphinx, exception: Optional[Exception] = None) -> None:
 	if exception:  # pragma: no cover
 		return
 
-	style = StringList()
+	style = {}
+
+	for colour, hex_ in _colour_map.items():
+		style[f"div.sphinx-highlights div.highlight-{colour} div.card-header"] = {"background-color": hex_}
 
 	# if app.config.html_theme in {"domdf_sphinx_theme", "sphinx_rtd_theme"}:
 	# 	header_colour = app.config.html_theme_options.get("style_nav_header_background", "#2980B9")
@@ -330,30 +342,10 @@ def copy_assets(app: Sphinx, exception: Optional[Exception] = None) -> None:
 	# 			'}',
 	# 			])
 
-	style.blankline()
-	style.extend([
-			"div.sphinx-highlights div.highlight-blue div.card-header {",
-			"    background-color: #6ab0de",
-			'}',
-			'',
-			"div.sphinx-highlights div.highlight-orange div.card-header {",
-			"    background-color: #f0b37e",
-			'}',
-			'',
-			"div.sphinx-highlights div.highlight-green div.card-header {",
-			"    background-color: #1abc9c",
-			'}',
-			'',
-			"div.sphinx-highlights div.highlight-red div.card-header {",
-			"    background-color: #f29f97",
-			'}',
-			'',
-			])
-
 	css_dir = PathPlus(app.builder.outdir) / "_static" / "css"
 	css_dir.maybe_make(parents=True)
-	css_file = css_dir / "sphinx_highlights.css"
-	css_file.write_lines(style)
+
+	dict2css.dump(style, css_dir / "sphinx_highlights.css")
 
 
 def env_get_outdated(app, env, added, changed, removed):
