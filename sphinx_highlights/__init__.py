@@ -86,18 +86,12 @@ def format_parameter(param: inspect.Parameter) -> str:
 
 	formatted = param.name
 
-	annotation_is_empty = param.annotation is inspect.Parameter.empty
-	default_is_empty = param.default is inspect.Parameter.empty
-
 	# Add annotation and default value
-	if not annotation_is_empty:
+	if param.annotation is not inspect.Parameter.empty:
 		formatted = f"{formatted}: {format_annotation(param.annotation)}"
 
-	if not default_is_empty:
-		if annotation_is_empty:
-			formatted = f"{formatted}={format_default_value(param.default)}"
-		else:
-			formatted = f"{formatted} = {format_default_value(param.default)}"
+	if param.default is not inspect.Parameter.empty:
+		formatted = f"{formatted} = {format_default_value(param.default)}"
 
 	if param.kind == inspect.Parameter.VAR_POSITIONAL:
 		formatted = rf'\*{formatted}'
