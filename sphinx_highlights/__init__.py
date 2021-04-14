@@ -84,22 +84,24 @@ def format_parameter(param: inspect.Parameter) -> str:
 	:return: The reStructuredText string.
 	"""
 
-	kind = param.kind
 	formatted = param.name
 
+	annotation_is_empty = param.annotation is inspect.Parameter.empty
+	default_is_empty = param.default is inspect.Parameter.empty
+
 	# Add annotation and default value
-	if param.annotation is not inspect.Parameter.empty:
+	if not annotation_is_empty:
 		formatted = f"{formatted}: {format_annotation(param.annotation)}"
 
-	if param.default is not inspect.Parameter.empty:
-		if param.annotation is not inspect.Parameter.empty:
-			formatted = f"{formatted} = {format_default_value(param.default)}"
-		else:
+	if not default_is_empty:
+		if annotation_is_empty:
 			formatted = f"{formatted}={format_default_value(param.default)}"
+		else:
+			formatted = f"{formatted} = {format_default_value(param.default)}"
 
-	if kind == inspect.Parameter.VAR_POSITIONAL:
+	if param.kind == inspect.Parameter.VAR_POSITIONAL:
 		formatted = rf'\*{formatted}'
-	elif kind == inspect.Parameter.VAR_KEYWORD:
+	elif param.kind == inspect.Parameter.VAR_KEYWORD:
 		formatted = rf"\*\*{formatted}"
 
 	return formatted
