@@ -45,26 +45,24 @@
              <p class="card-text">
               <code class="xref py py-func docutils literal notranslate">
                <span class="pre">
-                testing.check_file_regression()
+                utils.head()
                </span>
               </code>
              </p>
             </div>
             <div class="card-body docutils">
-             <pre class="literal-block">check_file_regression(
-  data: <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">StringList</span></code>],
-  file_regression: <code class="xref py py-class docutils literal notranslate"><span class="pre">FileRegressionFixture</span></code>,
-  extension: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> = <code class="docutils literal notranslate"><span class="pre">'.txt'</span></code>,
-  **kwargs,
-  )</pre>
+             <pre class="literal-block">head(
+  obj: <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">String</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">HasHead</span></code>],
+  n: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code> = <code class="docutils literal notranslate"><span class="pre">10</span></code>,
+  ) -&gt; <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</pre>
              <p class="card-text">
-              Check the given data against that in the reference file.
+              Returns the head of the given object.
              </p>
              <p class="card-text">
               See more in
               <code class="xref py py-mod docutils literal notranslate">
                <span class="pre">
-                domdf_python_tools.testing
+                domdf_python_tools.utils
                </span>
               </code>
               .

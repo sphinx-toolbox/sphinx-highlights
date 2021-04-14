@@ -93,17 +93,15 @@
 \chapter{Highlights}
 \label{\detokenize{index:highlights}}\phantomsection\label{\detokenize{index:sphinx-highlights-0}}\begin{itemize}
 \item {}
-\sphinxcode{\sphinxupquote{testing.check\_file\_regression()}}
+\sphinxcode{\sphinxupquote{utils.head()}}
 \begin{sphinxalltt}
-check\_file\_regression(
-  data: \sphinxcode{\sphinxupquote{Union}}{[}\sphinxcode{\sphinxupquote{str}}, \sphinxcode{\sphinxupquote{StringList}}{]},
-  file\_regression: \sphinxcode{\sphinxupquote{FileRegressionFixture}},
-  extension: \sphinxcode{\sphinxupquote{str}} = \sphinxcode{\sphinxupquote{\textquotesingle{}.txt\textquotesingle{}}},
-  **kwargs,
-  )
+head(
+  obj: \sphinxcode{\sphinxupquote{Union}}{[}\sphinxcode{\sphinxupquote{Tuple}}, \sphinxcode{\sphinxupquote{List}}, \sphinxcode{\sphinxupquote{DataFrame}}, \sphinxcode{\sphinxupquote{Series}}, \sphinxcode{\sphinxupquote{String}}, \sphinxcode{\sphinxupquote{HasHead}}{]},
+  n: \sphinxcode{\sphinxupquote{int}} = \sphinxcode{\sphinxupquote{10}},
+  ) \sphinxhyphen{}\textgreater{} \sphinxcode{\sphinxupquote{Optional}}{[}\sphinxcode{\sphinxupquote{str}}{]}
 \end{sphinxalltt}
 
-Check the given data against that in the reference file.
+Returns the head of the given object.
 
 \item {}
 \sphinxcode{\sphinxupquote{stringlist.StringList}}

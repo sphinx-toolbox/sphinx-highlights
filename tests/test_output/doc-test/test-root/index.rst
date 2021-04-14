@@ -10,6 +10,6 @@ Highlights
 	:colours: blue,green,red,orange
 
 	.stringlist.StringList
-	.testing.check_file_regression
+	.utils.head
 	domdf_python_tools.paths.PathPlus
 	domdf_python_tools.iterative.groupfloats
