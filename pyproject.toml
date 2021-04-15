@@ -4,7 +4,7 @@ build-backend = "whey"
 
 [project]
 name = "sphinx-highlights"
-version = "0.3.1"
+version = "0.4.0"
 description = "Sphinx extension to display a selection of highlights from a Python library."
 readme = "README.rst"
 keywords = [ "sphinx", "documentation", "sphinx-extension",]
