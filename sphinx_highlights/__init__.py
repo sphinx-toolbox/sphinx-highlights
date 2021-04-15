@@ -40,7 +40,7 @@ import random
 import re
 from importlib import import_module
 from types import FunctionType
-from typing import Iterable, Iterator, List, Optional, TypeVar, Union
+from typing import Iterable, Iterator, List, Optional, TypeVar, Union, get_type_hints
 
 # 3rd party
 import dict2css
@@ -54,6 +54,9 @@ from sphinx.util.docutils import SphinxDirective
 from sphinx_toolbox.more_autodoc.typehints import format_annotation
 from sphinx_toolbox.utils import Purger, SphinxExtMetadata
 from sphinxcontrib.default_values import format_default_value
+
+# this package
+from sphinx_highlights._eval_type import monkeypatcher
 
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2021 Dominic Davis-Foster"
@@ -109,6 +112,9 @@ def format_signature(obj: Union[type, FunctionType]) -> StringList:
 
 	:return: A list of reStructuredText lines.
 	"""
+
+	with monkeypatcher():
+		obj.__annotations__ = get_type_hints(obj)
 
 	signature: inspect.Signature = inspect.signature(obj)
 
