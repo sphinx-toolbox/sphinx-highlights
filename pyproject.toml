@@ -45,3 +45,10 @@ package = "sphinx_highlights"
 [tool.mkrecipe]
 conda-channels = [ "conda-forge", "domdfcoding",]
 extras = "all"
+
+[tool.dep_checker]
+namespace_packages = ["sphinxcontrib.default_values"]
+allowed_unused = ["sphinx_panels"]
+
+[tool.dep_checker.name_mapping]
+default_values = "sphinxcontrib.default_values"
