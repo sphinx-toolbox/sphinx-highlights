@@ -2,9 +2,9 @@
 #
 #  _eval_type.py
 """
-Modified version of ``typing._eval_type`` which doesn't completely bail out if it can't resolve
-a string annotation.
-"""
+Modified version of ``typing._eval_type`` which doesn't completely bail out
+if it can't resolve a string annotation.
+"""  # noqa: D400
 #
 #  Copyright © 2021 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 #
