@@ -15,4 +15,10 @@ Highlights
 	domdf_python_tools.iterative.groupfloats
 	domdf_python_tools.words.Plural
 
-See `another example <https://domdf-python-tools.readthedocs.io/en/latest/#highlights>`_ in the documentation for ``domdf_python_tools``, which uses the ReadTheDocs Sphinx Theme.
+.. only:: html
+
+	See `another example <https://domdf-python-tools.readthedocs.io/en/latest/#highlights>`_ in the documentation for ``domdf_python_tools``, which uses the ReadTheDocs Sphinx Theme.
+
+.. only:: latex
+
+	See the online documentation at https://sphinx-highlights.readthedocs.io for an example with the HTML builder.

@@ -50,6 +50,10 @@ classifiers:
 
 extra_sphinx_extensions:
  - sphinx_highlights
+ - html_section
 
 additional_ignore:
  - old.py
+
+exclude_files:
+ - contributing

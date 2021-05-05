@@ -135,9 +135,19 @@ Installation
 
 .. end installation
 
+.. raw:: latex
+
+
+	\bigskip\bigskip\hrule\bigskip
+
+
+.. extensions:: seed_intersphinx_mapping
+
 
 Contents
 ----------
+
+.. html-section::
 
 .. toctree::
 	:hidden:
@@ -146,13 +156,10 @@ Contents
 
 .. toctree::
 	:maxdepth: 3
-	:caption: Documentation
-	:glob:
 
 	usage
 	demo
 	api
-	contributing
 	Source
 
 .. start links
