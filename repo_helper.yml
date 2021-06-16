@@ -33,10 +33,10 @@ keywords:
   - documentation
   - sphinx-extension
 
-third_party_version_matrix:
-  sphinx:
-    - 3.2
-    - 3.3
+#third_party_version_matrix:
+#  sphinx:
+#    - 3.2
+#    - 3.3
 
 classifiers:
  - 'Development Status :: 4 - Beta'
