@@ -50,7 +50,7 @@ classifiers:
 
 extra_sphinx_extensions:
  - sphinx_highlights
- - html_section
+ - sphinx_toolbox_experimental.html_section
 
 additional_ignore:
  - old.py
