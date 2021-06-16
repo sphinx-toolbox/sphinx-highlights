@@ -4,4 +4,4 @@ docutils>=0.16
 domdf-python-tools>=2.9.0
 sphinx<3.4.0,>=3.2.0
 sphinx-panels>=0.5.1
-sphinx-toolbox>=2.12.1
+sphinx-toolbox>=2.10.0
