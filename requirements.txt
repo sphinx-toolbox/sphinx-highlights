@@ -1,7 +1,7 @@
 default-values>=0.4.2
 dict2css>=0.2.3
 docutils>=0.16
-domdf-python-tools>=2.2.0
+domdf-python-tools>=2.9.0
 sphinx<3.4.0,>=3.2.0
 sphinx-panels>=0.5.1
-sphinx-toolbox>=1.9.0
+sphinx-toolbox>=2.12.1
