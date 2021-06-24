@@ -16,7 +16,7 @@ standalone_contrib_guide: true
 preserve_custom_theme: true
 use_whey: true
 min_coverage: 95
-mypy_version: "0.902"
+mypy_version: "0.910"
 
 conda_channels:
   - conda-forge
