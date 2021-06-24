@@ -30,8 +30,8 @@ def test_latex_output(app, advanced_file_regression: AdvancedFileRegressionFixtu
 	app.build()
 
 	output_file = PathPlus(app.outdir / "sphinx-highlights-demo.tex")
-	content = StringList(output_file.read_lines())
+	content = str(StringList(output_file.read_lines())).replace("\\sphinxAtStartPar\n", '')
 	advanced_file_regression.check(
-			re.sub(r"\\date{.*}", r"\\date{Mar 11, 2021}", str(content)),
+			re.sub(r"\\date{.*}", r"\\date{Mar 11, 2021}", content),
 			extension=".tex",
 			)
