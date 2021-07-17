@@ -53,9 +53,17 @@ classifiers:
 extra_sphinx_extensions:
  - sphinx_highlights
  - sphinx_toolbox_experimental.html_section
+ - sphinx_toolbox_experimental.autosummary_widths
+ - sphinx_toolbox_experimental.needspace
+ - sphinx_toolbox_experimental.missing_xref
 
 additional_ignore:
  - old.py
 
 exclude_files:
  - contributing
+
+sphinx_conf_epilogue:
+ - nitpicky = True
+ - autosummary_widths_builders = ["latex"]
+ - ignore_missing_xrefs = ["^docutils.*", "^sphinx_highlights._T$"]
