@@ -1,66 +1,76 @@
 /* This file is managed by 'repo_helper'. Don't edit it directly. */
 
 div.highlight {
-    -moz-tab-size: 4; /* Firefox */
-    tab-size: 4;
+	-moz-tab-size: 4; /* Firefox */
+	tab-size: 4;
 }
 
 div#customising-the-colours p.highlight-blue {
-    background-color: #6ab0de;
-    text-align: center;
-    vertical-align: center;
-    min-width: 100px;
-    min-height: 50px;
-    padding-top: 25px;
-    }
+	background-color: #6ab0de;
+	text-align: center;
+	vertical-align: center;
+	min-width: 100px;
+	min-height: 50px;
+	padding-top: 25px;
+	}
 
 div#customising-the-colours p.highlight-orange {
-    background-color: #f0b37e;
-    text-align: center;
-    vertical-align: center;
-    min-width: 100px;
-    min-height: 50px;
-    padding-top: 25px;
-    }
+	background-color: #f0b37e;
+	text-align: center;
+	vertical-align: center;
+	min-width: 100px;
+	min-height: 50px;
+	padding-top: 25px;
+	}
 
 div#customising-the-colours p.highlight-green {
-    background-color: #1abc9c;
-    text-align: center;
-    vertical-align: center;
-    min-width: 100px;
-    min-height: 50px;
-    padding-top: 25px;
-    }
+	background-color: #1abc9c;
+	text-align: center;
+	vertical-align: center;
+	min-width: 100px;
+	min-height: 50px;
+	padding-top: 25px;
+	}
 
 div#customising-the-colours p.highlight-red {
-    background-color: #f29f97;
-    text-align: center;
-    vertical-align: center;
-    min-width: 100px;
-    min-height: 50px;
-    padding-top: 25px;
-    }
+	background-color: #f29f97;
+	text-align: center;
+	vertical-align: center;
+	min-width: 100px;
+	min-height: 50px;
+	padding-top: 25px;
+	}
 
 div#customising-the-colours p.highlight-purple {
-    background-color: #B452CD;
-    text-align: center;
-    vertical-align: center;
-    min-width: 100px;
-    min-height: 50px;
-    padding-top: 25px;
-    }
+	background-color: #B452CD;
+	text-align: center;
+	vertical-align: center;
+	min-width: 100px;
+	min-height: 50px;
+	padding-top: 25px;
+	}
 
 div#customising-the-colours div.table-wrapper {
-    margin-top: 0;
-    padding-top: 0;
-    margin-bottom: 0;
+	margin-top: 0;
+	padding-top: 0;
+	margin-bottom: 0;
 }
 
 div#customising-the-colours div.table-wrapper table.hlist ul.simple {
-    margin-top: 0;
-    margin-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 div#customising-the-colours li {
-    list-style: none;
+	list-style: none;
+}
+
+
+.field-list dt, dl.simple dt {
+	margin-top: 0.5rem;
+}
+
+div.versionchanged ul, div.versionremoved ul {
+	margin-left: 20px;
+	margin-top: 0;
 }
