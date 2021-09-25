@@ -60,7 +60,8 @@ sphinx-highlights
 		:workflow: mypy
 		:alt: mypy status
 
-	.. |requires| requires-io-shield::
+	.. |requires| image:: https://dependency-dash.herokuapp.com/github/sphinx-toolbox/sphinx-highlights/badge.svg
+		:target: https://dependency-dash.herokuapp.com/github/sphinx-toolbox/sphinx-highlights/
 		:alt: Requirements Status
 
 	.. |coveralls| coveralls-shield::
