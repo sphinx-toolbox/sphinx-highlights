@@ -38,6 +38,7 @@ import inspect
 import itertools
 import random
 import re
+import sys
 from importlib import import_module
 from types import FunctionType
 from typing import Iterable, Iterator, List, Optional, TypeVar, Union, get_type_hints
@@ -49,6 +50,14 @@ from docutils.parsers.rst.directives import unchanged_required
 from docutils.statemachine import ViewList
 from domdf_python_tools.paths import PathPlus
 from domdf_python_tools.stringlist import DelimitedList, StringList
+
+# This all has to be up here so it's triggered before Sphinx is imported.
+if sys.version_info >= (3, 10):
+	# stdlib
+	import types
+	types.Union = types.UnionType
+
+# 3rd party
 from sphinx.application import Sphinx
 from sphinx.util.docutils import SphinxDirective
 from sphinx_toolbox.more_autodoc.typehints import format_annotation
