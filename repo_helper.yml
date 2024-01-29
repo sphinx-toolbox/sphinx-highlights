@@ -75,3 +75,6 @@ sphinx_conf_epilogue:
 
 intersphinx_mapping:
  - "'pandas': ('https://pandas.pydata.org/docs/', None)"
+
+tox_unmanaged:
+ - testenv
