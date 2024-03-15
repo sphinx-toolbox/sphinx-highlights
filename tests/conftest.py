@@ -6,4 +6,4 @@ if sys.version_info >= (3, 10):
 	import types
 	types.Union = types.UnionType
 
-pytest_plugins = ("coincidence", )
+pytest_plugins = ("coincidence", "sphinx_toolbox.testing")
