@@ -313,6 +313,7 @@ class SphinxHighlightsDirective(SphinxDirective):
 		Create the highlights node.
 		"""
 
+		assert self.env.app.builder is not None
 		if self.env.app.builder.format.lower() == "html":
 			return self.run_html()
 		else:
@@ -353,6 +354,7 @@ def copy_assets(app: Sphinx, exception: Optional[Exception] = None) -> None:
 	# 			'}',
 	# 			])
 
+	assert app.builder is not None
 	css_dir = PathPlus(app.builder.outdir) / "_static" / "css"
 	css_dir.maybe_make(parents=True)
 
