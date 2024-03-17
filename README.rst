@@ -101,7 +101,7 @@ sphinx-highlights
 .. |language| image:: https://img.shields.io/github/languages/top/sphinx-toolbox/sphinx-highlights
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/sphinx-toolbox/sphinx-highlights/v0.5.2
+.. |commits-since| image:: https://img.shields.io/github/commits-since/sphinx-toolbox/sphinx-highlights/v0.6.0
 	:target: https://github.com/sphinx-toolbox/sphinx-highlights/pulse
 	:alt: GitHub commits since tagged version
 
