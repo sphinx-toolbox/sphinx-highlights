@@ -1,14 +1,13 @@
 # stdlib
 import random
-import re
+from typing import Tuple, no_type_check
 
 # 3rd party
 import pytest
 from bs4 import BeautifulSoup  # type: ignore
-from coincidence.regressions import AdvancedFileRegressionFixture
 from domdf_python_tools.paths import PathPlus
 from domdf_python_tools.stringlist import StringList
-from sphinx_toolbox.testing import HTMLRegressionFixture, LaTeXRegressionFixture, check_html_regression
+from sphinx_toolbox.testing import HTMLRegressionFixture, LaTeXRegressionFixture
 
 
 def test_build_example(app):
@@ -16,10 +15,22 @@ def test_build_example(app):
 	app.build()
 
 
+@no_type_check
+def _get_alabaster_version() -> Tuple[int, int, int]:
+	try:
+		# 3rd party
+		import alabaster._version as alabaster  # type: ignore[import]
+	except ImportError:
+		# 3rd party
+		import alabaster  # type: ignore[import]
+
+	return tuple(map(int, alabaster.__version__.split('.')))
+
+
 @pytest.mark.sphinx("html", srcdir="test-root")
 @pytest.mark.parametrize("page", ["index.html"], indirect=True)
 def test_html_output(page: BeautifulSoup, html_regression: HTMLRegressionFixture):
-	html_regression.check(page, jinja2=True)
+	html_regression.check(page, jinja2=True, jinja2_namespace={"alabaster_version": _get_alabaster_version()})
 
 
 @pytest.mark.sphinx("latex", srcdir="test-root")
