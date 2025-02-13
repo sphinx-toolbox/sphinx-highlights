@@ -28,11 +28,11 @@
 
 # stdlib
 import random
-from typing import Any, Dict, NamedTuple, Sequence, Tuple
+from typing import Any, Dict, Iterator, NamedTuple, Sequence, Tuple
 
 # 3rd party
 import pytest
-from bs4 import BeautifulSoup  # type: ignore
+from bs4 import BeautifulSoup
 from domdf_python_tools.paths import PathPlus
 from sphinx.testing.fixtures import app, make_app, shared_result, sphinx_test_tempdir, test_params
 from sphinx.testing.path import path
@@ -107,7 +107,7 @@ def app_params(
 
 
 @pytest.fixture()
-def page(app, request, monkeypatch) -> BeautifulSoup:
+def page(app, request, monkeypatch) -> Iterator[BeautifulSoup]:
 	random.seed("5678")
 
 	app.build(force_all=True)

@@ -4,7 +4,7 @@ from typing import Tuple, no_type_check
 
 # 3rd party
 import pytest
-from bs4 import BeautifulSoup  # type: ignore
+from bs4 import BeautifulSoup
 from domdf_python_tools.paths import PathPlus
 from domdf_python_tools.stringlist import StringList
 from sphinx_toolbox.testing import HTMLRegressionFixture, LaTeXRegressionFixture
