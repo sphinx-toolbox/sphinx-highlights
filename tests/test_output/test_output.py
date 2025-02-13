@@ -7,10 +7,11 @@ import pytest
 from bs4 import BeautifulSoup
 from domdf_python_tools.paths import PathPlus
 from domdf_python_tools.stringlist import StringList
+from sphinx.application import Sphinx
 from sphinx_toolbox.testing import HTMLRegressionFixture, LaTeXRegressionFixture
 
 
-def test_build_example(app):
+def test_build_example(app: Sphinx):
 	app.build()
 	app.build()
 
@@ -35,15 +36,16 @@ def test_html_output(page: BeautifulSoup, html_regression: HTMLRegressionFixture
 
 @pytest.mark.sphinx("latex", srcdir="test-root")
 def test_latex_output(
-		app,
+		app: Sphinx,
 		latex_regression: LaTeXRegressionFixture,
 		):
 	random.seed("5678")
 
+	assert app.builder is not None
 	assert app.builder.name.lower() == "latex"
 	app.build()
 
-	output_file = PathPlus(app.outdir / "sphinx-highlights-demo.tex")
+	output_file = PathPlus(app.outdir) / "sphinx-highlights-demo.tex"
 	content = str(StringList(output_file.read_lines())).replace("\\sphinxAtStartPar\n", '')
 	latex_regression.check(
 			# re.sub(r"\\date{.*}", r"\\date{Mar 11, 2021}", content),

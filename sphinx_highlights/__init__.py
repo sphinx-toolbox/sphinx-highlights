@@ -41,7 +41,7 @@ import re
 import sys
 from importlib import import_module
 from types import FunctionType
-from typing import Iterable, Iterator, List, Optional, TypeVar, Union, get_type_hints
+from typing import Iterable, Iterator, List, Optional, Set, TypeVar, Union, get_type_hints
 
 # 3rd party
 import dict2css
@@ -59,6 +59,7 @@ if sys.version_info >= (3, 10):
 
 # 3rd party
 from sphinx.application import Sphinx
+from sphinx.environment import BuildEnvironment
 from sphinx.util.docutils import SphinxDirective
 from sphinx_toolbox.more_autodoc.typehints import format_annotation
 from sphinx_toolbox.utils import Purger, SphinxExtMetadata
@@ -261,7 +262,7 @@ class SphinxHighlightsDirective(SphinxDirective):
 
 		view = ViewList(content)
 		body_node = nodes.paragraph(rawsource=str(content))
-		self.state.nested_parse(view, self.content_offset, body_node)  # type: ignore
+		self.state.nested_parse(view, self.content_offset, body_node)  # type: ignore[arg-type]
 
 		sphinx_highlights_purger.add_node(self.env, body_node, targetnode, self.lineno)
 
@@ -302,7 +303,7 @@ class SphinxHighlightsDirective(SphinxDirective):
 
 		view = ViewList(content)
 		body_node = nodes.container(rawsource=str(content))
-		self.state.nested_parse(view, self.content_offset, body_node)  # type: ignore
+		self.state.nested_parse(view, self.content_offset, body_node)  # type: ignore[arg-type]
 
 		sphinx_highlights_purger.add_node(self.env, body_node, targetnode, self.lineno)
 
@@ -361,7 +362,13 @@ def copy_assets(app: Sphinx, exception: Optional[Exception] = None) -> None:
 	dict2css.dump(style, css_dir / "sphinx_highlights.css")
 
 
-def env_get_outdated(app, env, added, changed, removed):
+def env_get_outdated(
+		app: Sphinx,
+		env: BuildEnvironment,
+		added: Set[str],
+		changed: Set[str],
+		removed: Set[str],
+		) -> List[str]:
 	return [node["docname"] for node in getattr(env, sphinx_highlights_purger.attr_name, ())]
 
 

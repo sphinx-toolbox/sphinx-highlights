@@ -43,7 +43,7 @@ __all__ = ["monkeypatcher"]
 
 if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 
-	def _eval_type(t, globalns, localns, recursive_guard=frozenset()):
+	def _eval_type(t, globalns, localns, recursive_guard=frozenset()):  # noqa: MAN001,MAN002
 		"""
 		Evaluate all forward references in the given type t.
 
@@ -78,7 +78,7 @@ if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 
 elif sys.version_info >= (3, 7):  # pragma: no cover (py39+ or <py37)
 
-	def _eval_type(t, globalns, localns):
+	def _eval_type(t, globalns, localns):  # noqa: MAN001,MAN002
 		"""
 		Evaluate all forward references in the given type t.
 
@@ -110,7 +110,7 @@ elif sys.version_info >= (3, 7):  # pragma: no cover (py39+ or <py37)
 
 
 @contextlib.contextmanager
-def monkeypatcher():
+def monkeypatcher() -> typing.Iterator[None]:
 	"""
 	Use the modified version of ``typing._eval_type`` for the scope of the :keyword:`with` block.
 	"""

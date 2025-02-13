@@ -34,6 +34,7 @@ from typing import Any, Dict, Iterator, NamedTuple, Sequence, Tuple
 import pytest
 from bs4 import BeautifulSoup
 from domdf_python_tools.paths import PathPlus
+from sphinx.application import Sphinx
 from sphinx.testing.fixtures import app, make_app, shared_result, sphinx_test_tempdir, test_params
 from sphinx.testing.path import path
 
@@ -48,7 +49,7 @@ DEFAULT_ENABLED_MARKERS = [
 		]
 
 
-def pytest_configure(config):
+def pytest_configure(config) -> None:  # noqa: MAN001
 	# register custom markers
 	for marker in DEFAULT_ENABLED_MARKERS:
 		config.addinivalue_line("markers", marker)
@@ -60,7 +61,7 @@ class AppParams(NamedTuple):
 
 
 @pytest.fixture(scope="session")
-def rootdir():
+def rootdir() -> path:
 	rdir = PathPlus(__file__).parent.absolute() / "doc-test"
 	(rdir / "test-root").maybe_make(parents=True)
 	return path(rdir)
@@ -107,7 +108,7 @@ def app_params(
 
 
 @pytest.fixture()
-def page(app, request, monkeypatch) -> Iterator[BeautifulSoup]:
+def page(app: Sphinx, request, monkeypatch) -> Iterator[BeautifulSoup]:
 	random.seed("5678")
 
 	app.build(force_all=True)
