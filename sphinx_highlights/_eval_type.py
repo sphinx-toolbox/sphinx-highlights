@@ -55,7 +55,8 @@ if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 		if isinstance(t, typing.ForwardRef):
 			return t._evaluate(globalns, localns, recursive_guard)
 
-		if isinstance(t, (typing._GenericAlias, typing.GenericAlias)):  # noqa: TYP006
+		_genericalias = (typing._GenericAlias, typing.GenericAlias)  # type: ignore[attr-defined]  # noqa: TYP006
+		if isinstance(t, _genericalias):
 			ev_args_list = []
 
 			for a in t.__args__:
@@ -69,8 +70,10 @@ if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 			if ev_args == t.__args__:
 				return t
 
-			if isinstance(t, typing.GenericAlias):  # noqa: TYP006
-				return typing.GenericAlias(t.__origin__, ev_args)  # noqa: TYP006
+			if isinstance(t, typing.GenericAlias):  # type: ignore[attr-defined]  # noqa: TYP006
+				return typing.GenericAlias(  # type: ignore[attr-defined]  # noqa: TYP006
+					t.__origin__, ev_args  # type: ignore[arg-type]
+					)
 			else:
 				return t.copy_with(ev_args)
 
