@@ -79,7 +79,7 @@ if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 
 		return t
 
-elif sys.version_info >= (3, 7):  # pragma: no cover (py39+ or <py37)
+else:  # pragma: no cover (py39+ or <py37)
 
 	def _eval_type(t, globalns, localns):  # noqa: MAN001,MAN002
 		"""
