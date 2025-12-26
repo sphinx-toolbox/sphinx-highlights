@@ -43,7 +43,7 @@ __all__ = ["monkeypatcher"]
 
 if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 
-	def _eval_type(t, globalns, localns, recursive_guard=frozenset()):  # noqa: MAN001,MAN002
+	def _eval_type(t, globalns, localns, recursive_guard=frozenset()):  # noqa: MAN001,MAN002,PRM002
 		"""
 		Evaluate all forward references in the given type t.
 
@@ -81,7 +81,7 @@ if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 
 else:  # pragma: no cover (py39+ or <py37)
 
-	def _eval_type(t, globalns, localns):  # noqa: MAN001,MAN002
+	def _eval_type(t, globalns, localns):  # noqa: MAN001,MAN002,PRM002
 		"""
 		Evaluate all forward references in the given type t.
 
