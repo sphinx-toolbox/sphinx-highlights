@@ -136,7 +136,7 @@ def format_signature(obj: Union[type, FunctionType]) -> StringList:
 	if signature.return_annotation is not inspect.Signature.empty and not isinstance(obj, type):
 		return_annotation = f") -> {format_annotation(signature.return_annotation)}"
 	else:
-		return_annotation = f")"
+		return_annotation = ")"
 
 	total_length = len(obj.__name__) + len(return_annotation)
 
