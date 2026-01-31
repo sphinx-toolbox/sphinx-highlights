@@ -73,7 +73,7 @@ if sys.version_info >= (3, 9):  # pragma: no cover (<py39)
 			if isinstance(t, typing.GenericAlias):  # type: ignore[attr-defined]  # noqa: TYP006
 				return typing.GenericAlias(  # type: ignore[attr-defined]  # noqa: TYP006
 					t.__origin__, ev_args,  # type: ignore[arg-type]
-					)
+				)
 			else:
 				return t.copy_with(ev_args)
 
